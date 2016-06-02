@@ -1,6 +1,6 @@
 package net.bynaryscode.util.maths.geometric;
 
-public class RectangleInt extends Rectangle implements Cloneable{
+public class RectangleInt extends Rectangle implements Cloneable {
 	
 	public int xmin, ymin, xmax, ymax;
 	
@@ -60,6 +60,29 @@ public class RectangleInt extends Rectangle implements Cloneable{
 		this.xmax += x;
 		this.ymin += y;
 		this.ymax += y;
+	}
+	
+	/**
+	 * Multiplie la hauteur de ce rectangle par {@code scaleY} et sa largeur
+	 * par {@code scaleX}. Le rectangle final garde le même centre.
+	 * @param scaleX - L'échelle à appliquer au rectangle en largeur.
+	 * @param scaleY - L'échelle à appliquer au rectangle en hauteur.
+	 */
+	public RectangleInt scaleFromCenter(double scaleX, double scaleY) {
+		CoordonneesDouble c = center();
+		
+		int senseX = (int) Math.signum(this.xmax - this.xmin);
+		int senseY = (int) Math.signum(this.ymax - this.ymin);
+		
+		double hw = this.getWidth() * scaleX / 2;
+		double hh = this.getHeight() * scaleY / 2;
+		
+		this.xmin = (int) (c.x - hw * senseX);
+		this.xmax = (int) (c.x + hw * senseX);
+		this.ymin = (int) (c.y - hh * senseY);
+		this.ymax = (int) (c.y + hh * senseY);
+		
+		return this;
 	}
 	
 	@Override

@@ -175,12 +175,29 @@ public class MathUtil {
 		return getDistance(cd1.x, cd1.y, cd2.x, cd2.y);
 	}
 	
+	public static double getSquaredDistance(Coordonnees c1, Coordonnees c2) {
+		CoordonneesDouble cd1 = c1.asDouble();
+		CoordonneesDouble cd2 = c2.asDouble();
+		return getSquaredDistance(cd1.x, cd1.y, cd2.x, cd2.y);
+	}
+	
 	public static double getDistance(double xA, double yA, double xB, double yB) {
 		return Math.sqrt(getSquaredDistance(xA, yA, xB, yB));
 	}
 	
 	public static double getSquaredDistance(double xA, double yA, double xB, double yB) {
 		return Math.pow(xA - xB, 2) + Math.pow(yA - yB, 2);
+	}
+	
+	public static Coordonnees interpolateLinear(Coordonnees point1, Coordonnees point2, double param) {
+		CoordonneesDouble pointd1 = point1.asDouble();
+		CoordonneesDouble pointd2 = point2.asDouble();
+		
+		CoordonneesDouble result = new CoordonneesDouble(
+				pointd1.x + (pointd2.x - pointd1.x) * param,
+				pointd1.y + (pointd2.y - pointd1.y) * param);
+		
+		return result;
 	}
 	
 	public static double nextGaussian(Random rand, double esperance, double ecartType) {

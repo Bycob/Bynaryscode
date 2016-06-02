@@ -7,6 +7,8 @@ import java.awt.Insets;
 import java.awt.LayoutManager2;
 import java.util.ArrayList;
 
+import javax.swing.GroupLayout.Alignment;
+
 /**
  * Empile les composant de haut en bas suivant leur taille
  * définie au préalable.
@@ -14,22 +16,34 @@ import java.util.ArrayList;
  */
 public class VerticalLayout implements LayoutManager2 {
 	
+	public static final int DEFAULT_GAP = 3;
+	
 	private Container cont = null;
 	private ArrayList<Component> componentList = new ArrayList<Component>();
 	
-	private int gap = 0;
+	private int gap;
+	private Alignment alignment;
 	
 	/**
 	 * Créé un VerticalLayout sur le container passé en paramètres.
 	 * @param cont - le container à qui est appliqué le layout.
 	 */
 	public VerticalLayout(Container cont) {
-		this.cont = cont;
+		this(cont, DEFAULT_GAP, Alignment.CENTER);
 	}
 	
 	public VerticalLayout(Container cont, int gap) {
-		this(cont);
+		this(cont, gap, Alignment.CENTER);
+	}
+	
+	public VerticalLayout(Container cont, Alignment alignment) {
+		this(cont, DEFAULT_GAP, alignment);
+	}
+	
+	public VerticalLayout(Container cont, int gap, Alignment alignment) {
+		this.cont = cont;
 		this.gap = gap;
+		setAlignment(alignment);
 	}
 	
 	public int getGap() {
@@ -38,6 +52,14 @@ public class VerticalLayout implements LayoutManager2 {
 	
 	public void setGap(int gap) {
 		this.gap = gap;
+	}
+	
+	public Alignment getAlignment() {
+		return this.alignment;
+	}
+	
+	public void setAlignment(Alignment alignment) {
+		this.alignment = alignment == null ? Alignment.CENTER : alignment;
 	}
 	
 	@Override
@@ -84,7 +106,20 @@ public class VerticalLayout implements LayoutManager2 {
 		for (Component c : this.componentList) {
 			Dimension d = c.getPreferredSize();
 			int width = Math.min(right - left, d.width);
-			c.setBounds(centerX - width / 2, y, width, d.height);
+			
+			int x;
+			switch (this.alignment) {
+			case LEADING:
+				x = left + gap;
+				break;
+			case CENTER:
+			default:
+				x = centerX - width / 2;
+				break;
+			
+			}
+			
+			c.setBounds(x, y, width, d.height);
 			
 			y += d.height + this.gap;
 		}

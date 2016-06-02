@@ -1,5 +1,7 @@
 package net.bynaryscode.util.maths.geometric;
 
+import net.bynaryscode.util.maths.MathUtil;
+
 /**
  * Classe représentant un cercle.
  * @author Louis JEAN
@@ -74,7 +76,7 @@ public class Circle implements Forme {
 	@Override
 	public boolean contains(Coordonnees c) {
 		if (c == null) return false;
-		return c.asDouble().getDistance(center()) <= this.rayon;
+		return MathUtil.getSquaredDistance(c, center()) <= this.rayon * this.rayon;
 	}
 
 	@Override

@@ -21,6 +21,13 @@ public class Vec3d {
 		this.z = z;
 	}
 	
+	public Vec3d(Coordonnees c) {
+		CoordonneesDouble cd = c.asDouble();
+		this.x = cd.x;
+		this.y = cd.y;
+		this.z = 0;
+	}
+	
 	public double getX() {
 		return x;
 	}
