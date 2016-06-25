@@ -36,6 +36,20 @@ public class Line2D {
 		return equation(x, y) == 0;
 	}
 	
+	public double distance(double x, double y) {
+		return Math.sqrt(squaredDistance(x, y));
+	}
+
+	public double squaredDistance(double x, double y) {
+		double eq = equation(x, y);
+		return eq * eq / (a * a + b * b);
+	}
+	
+	/** @deprecated */
+	public CoordonneesDouble getOrthographicProjection(double x, double y) {
+		return new CoordonneesDouble();
+	}
+	
 	/** Retourne le résultat de l'opération ax + bx + c. Le résultat est positif
 	 * si le point est à gauche de la droite (sens de la droite donné par le vecteur
 	 * directeur {@link #getDirectionVector()}) et négatif si le point est à droite
@@ -51,5 +65,10 @@ public class Line2D {
 	
 	public String getEquationStr() {
 		return a + "x + " + b + "y + " + c + " = 0";
+	}
+	
+	@Override
+	public String toString() {
+		return this.getEquationStr();
 	}
 }

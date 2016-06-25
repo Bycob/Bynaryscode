@@ -63,7 +63,7 @@ public class Circle implements Forme {
 		double var0 = Math.PI * 2d / this.nbSommets;
 		double angle = 0;
 		
-		for (int i = 0 ; i < result.length ; i++, angle += var0) {
+		for (int i = 0 ; i < result.length ; i++, angle -= var0) {
 			result[i] = new CoordonneesDouble(
 					this.centreX + Math.cos(angle) * this.rayon,
 					this.centreY + Math.sin(angle) * this.rayon

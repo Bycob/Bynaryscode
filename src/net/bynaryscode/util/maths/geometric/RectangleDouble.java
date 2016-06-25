@@ -122,11 +122,15 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 	
 	@Override
 	public CoordonneesDouble[] getSommets() {
+		double xmin = Math.min(this.xmin, this.xmax);
+		double xmax = Math.max(this.xmin, this.xmax);
+		double ymin = Math.min(this.ymin, this.ymax);
+		double ymax = Math.max(this.ymin, this.ymax);
 		return new CoordonneesDouble[] {
-				new CoordonneesDouble(xmin, ymin),
-				new CoordonneesDouble(xmax, ymin),
+				new CoordonneesDouble(xmin, ymax),
 				new CoordonneesDouble(xmax, ymax),
-				new CoordonneesDouble(xmin, ymax)
+				new CoordonneesDouble(xmax, ymin),
+				new CoordonneesDouble(xmin, ymin)
 		};
 	}
 	

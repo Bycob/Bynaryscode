@@ -63,8 +63,16 @@ public class MathUtil {
 		return (value >= min && value <= max)? value : ((value < min)? min : max);
 	}
 	
-	public static int ent(double dbl) {
+	public static int integerPart(double dbl) {
 		return (int) dbl;
+	}
+	
+	public static double decimalPart(double dbl) {
+		return dbl - integerPart(dbl);
+	}
+	
+	public static double round10(double dbl, int digit) {
+		return Math.round(dbl * Math.pow(10, digit)) / Math.pow(10, digit);
 	}
 	
 	public static double addAngle(double angle, double plusValue) {

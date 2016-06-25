@@ -47,11 +47,15 @@ public class RectangleInt extends Rectangle implements Cloneable {
 	
 	@Override
 	public CoordonneesDouble[] getSommets() {
+		int xmin = Math.min(this.xmin, this.xmax);
+		int xmax = Math.max(this.xmin, this.xmax);
+		int ymin = Math.min(this.ymin, this.ymax);
+		int ymax = Math.max(this.ymin, this.ymax);
 		return new CoordonneesDouble[] {
-				new CoordonneesDouble(xmin, ymin),
-				new CoordonneesDouble(xmax, ymin),
+				new CoordonneesDouble(xmin, ymax),
 				new CoordonneesDouble(xmax, ymax),
-				new CoordonneesDouble(xmin, ymax)
+				new CoordonneesDouble(xmax, ymin),
+				new CoordonneesDouble(xmin, ymin)
 		};
 	}
 	
