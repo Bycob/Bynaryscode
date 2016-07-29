@@ -22,7 +22,7 @@ package net.bynaryscode.util.maths.analysis;
 public class FunctionParser {
 	
 	public PolynomialFunction parsePolynomial(String function) {
-		String regex = "(\\d*\\.?\\d*(x(\\^\\d)?)?\\+?)*";
+		String regex = "(^[\\+-]?|[\\+-])\\s*(\\d*\\.?\\d*)(\\s*x(\\^(\\d+))?)?";
 		return null;
 	}
 }
