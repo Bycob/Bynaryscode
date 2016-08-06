@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-import net.bynaryscode.util.maths.geometric.Coordonnees;
+import net.bynaryscode.util.maths.geometric.Vec2;
 
 public class PathFinder {
 	
@@ -38,7 +38,7 @@ public class PathFinder {
 	}
 	
 	private LinkedList<SpaceGraphPoint> openList;
-	private HashMap<Coordonnees, SpaceGraphPoint> closedList;
+	private HashMap<Vec2, SpaceGraphPoint> closedList;
 	
 	/** Trouve et renvoie le chemin du point <tt>from</tt> au point <tt>to</tt>.
 	 * Si aucun chemin n'est trouvé, renvoie <tt>null</tt>
@@ -47,7 +47,7 @@ public class PathFinder {
 		if (this.graph.getHeuristic(from, to) == 0) return null;
 		
 		this.openList = new LinkedList<SpaceGraphPoint>();
-		this.closedList = new HashMap<Coordonnees, SpaceGraphPoint>();
+		this.closedList = new HashMap<Vec2, SpaceGraphPoint>();
 		
 		SpaceGraphPoint lastNode = from;
 		

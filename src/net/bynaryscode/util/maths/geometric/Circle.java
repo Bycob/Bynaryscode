@@ -51,8 +51,8 @@ public class Circle implements Forme {
 		this.rayon = rayon >= 0 ? rayon : 0;
 	}
 	
-	public CoordonneesDouble getCentre() {
-		return new CoordonneesDouble(this.centreX, this.centreY);
+	public Vec2d getCentre() {
+		return new Vec2d(this.centreX, this.centreY);
 	}
 	
 	public void setCentre(double x, double y) {
@@ -73,17 +73,18 @@ public class Circle implements Forme {
 	 * {@link #getSommets()};
 	 */
 	public void setNbSommets(int nb) {
-		this.nbSommets = Math.max(4, nb);
+		this.nbSommets = Math.min(4, nb);
 	}
 	
-	@Override
-	public CoordonneesDouble[] getSommets() {
-		CoordonneesDouble[] result = new CoordonneesDouble[this.nbSommets];
-		double var0 = Math.PI * 2d / this.nbSommets;
+	public Vec2d[] getSommets(int nb) {
+		if (nb < 4) throw new IllegalArgumentException("nb should be >= 4");
+		
+		Vec2d[] result = new Vec2d[nb];
+		double var0 = Math.PI * 2d / nb;
 		double angle = 0;
 		
 		for (int i = 0 ; i < result.length ; i++, angle -= var0) {
-			result[i] = new CoordonneesDouble(
+			result[i] = new Vec2d(
 					this.centreX + Math.cos(angle) * this.rayon,
 					this.centreY + Math.sin(angle) * this.rayon
 					);
@@ -91,16 +92,21 @@ public class Circle implements Forme {
 		
 		return result;
 	}
+	
+	@Override
+	public Vec2d[] getSommets() {
+		return getSommets(this.nbSommets);
+	}
 
 	@Override
-	public boolean contains(Coordonnees c) {
+	public boolean contains(Vec2 c) {
 		if (c == null) return false;
 		return MathUtil.getSquaredDistance(c, center()) <= this.rayon * this.rayon;
 	}
 
 	@Override
-	public CoordonneesDouble center() {
-		return new CoordonneesDouble(this.centreX, this.centreY);
+	public Vec2d center() {
+		return new Vec2d(this.centreX, this.centreY);
 	}
 
 }

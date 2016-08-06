@@ -26,21 +26,21 @@ package net.bynaryscode.util.maths.geometric;
  * @author Louis JEAN
  *
  */
-public abstract class Coordonnees implements Cloneable {
+public abstract class Vec2 implements Cloneable {
 	
-	/** Retourne une copie de cet objet, de type {@link CoordonneesDouble} */
-	public abstract CoordonneesDouble asDouble();
-	/** Retourne une copie de cet objet, de type {@link CoordonneesInt} */
-	public abstract CoordonneesInt asInteger();
-	/** Retourne une copie de cet objet, de type {@link CoordonneesFloat} */
-	public abstract CoordonneesFloat asFloat();
+	/** Retourne une copie de cet objet, de type {@link Vec2d} */
+	public abstract Vec2d asDouble();
+	/** Retourne une copie de cet objet, de type {@link Vec2i} */
+	public abstract Vec2i asInteger();
+	/** Retourne une copie de cet objet, de type {@link Vec2f} */
+	public abstract Vec2f asFloat();
 	
 	@Override
 	public boolean equals(Object obj) {
 		if (obj == null) return false;
 		if (obj.getClass() != this.getClass()) return false;
 		
-		return asDouble().equals(((Coordonnees) obj).asDouble());
+		return asDouble().equals(((Vec2) obj).asDouble());
 	}
 	
 	@Override
@@ -49,11 +49,11 @@ public abstract class Coordonnees implements Cloneable {
 	}
 	
 	@Override
-	public Coordonnees clone() {
-		Coordonnees clone = null;
+	public Vec2 clone() {
+		Vec2 clone = null;
 		
 		try {
-			clone = (Coordonnees) super.clone();
+			clone = (Vec2) super.clone();
 		} catch (Exception SOOoooooUseless) {}
 		
 		return clone;

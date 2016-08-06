@@ -26,7 +26,7 @@ import java.util.LinkedList;
 import java.util.ListIterator;
 
 import net.bynaryscode.util.Util;
-import net.bynaryscode.util.maths.geometric.Coordonnees;
+import net.bynaryscode.util.maths.geometric.Vec2;
 
 public class Path implements Cloneable {
 
@@ -35,13 +35,13 @@ public class Path implements Cloneable {
 		/** Les croisements avec d'autre chemins en ce noeud précisément. */
 		private ArrayList<Path> crossroads = new ArrayList<Path>(4);
 		/** Le point qui caractérise le noeud. */
-		private Coordonnees point;
+		private Vec2 point;
 		
-		private Node(Coordonnees point) {
+		private Node(Vec2 point) {
 			this.point = point;
 		}
 		
-		public Coordonnees getPoint() {
+		public Vec2 getPoint() {
 			return this.point;
 		}
 		
@@ -116,14 +116,14 @@ public class Path implements Cloneable {
 	}
 	
 	/** Ajoute un noeud au chemin et place le curseur après ce noeud. */
-	public Node addNode(Coordonnees point) {
+	public Node addNode(Vec2 point) {
 		Node n = new Node(point);
 		this.pathIterator.add(n);
 		return n;
 	}
 	
 	/** Ajoute le noeud au début du chemin. La place du curseur est inchangée. */
-	public Node addNodeFirst(Coordonnees point) {
+	public Node addNodeFirst(Vec2 point) {
 		Node n = new Node(point);
 		
 		int currentIndex = getCurrentIndex();

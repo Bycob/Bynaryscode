@@ -63,13 +63,13 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 		this.ymax = y2;
 	}
 	
-	public RectangleDouble(CoordonneesDouble pointMin, CoordonneesDouble pointMax) {
+	public RectangleDouble(Vec2d pointMin, Vec2d pointMax) {
 		this(pointMin.x, pointMin.y, pointMax.x, pointMax.y);
 	}
 	
 	@Override
-	public CoordonneesDouble center() {
-		return new CoordonneesDouble((xmin + xmax) / 2 , (ymin + ymax) / 2);
+	public Vec2d center() {
+		return new Vec2d((xmin + xmax) / 2 , (ymin + ymax) / 2);
 	}
 
 	public double getWidth() {
@@ -81,8 +81,8 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 	}
 	
 	@Override
-	public boolean contains(Coordonnees c){
-		CoordonneesDouble cd = c.asDouble();
+	public boolean contains(Vec2 c){
+		Vec2d cd = c.asDouble();
 		
 		double x = cd.x;
 		double y = cd.y;
@@ -97,7 +97,7 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 	public boolean contains(RectangleDouble r) {
 		if (r == null) return false;
 		
-		CoordonneesDouble[] sommets = r.getSommets();
+		Vec2d[] sommets = r.getSommets();
 		
 		if (!contains(sommets[0])) return false;
 		if (!contains(sommets[2])) return false;
@@ -108,7 +108,7 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 	public boolean intersects(RectangleDouble other) {
 		if (other == null) return false;
 		
-		CoordonneesDouble[] otherSommets = other.getSommets();
+		Vec2d[] otherSommets = other.getSommets();
 		int somCount = 0;
 		
 		//on commence par compter les sommets de l'autre rectangle, compris dans celui-ci.
@@ -122,7 +122,7 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 			return false;
 		}
 		else if (somCount == 0) {
-			CoordonneesDouble[] thisSommets = this.getSommets();
+			Vec2d[] thisSommets = this.getSommets();
 			somCount = 0;
 			for (int i = 0 ; i < 4 ; i++) {
 				if (other.contains(thisSommets[i])) {
@@ -140,16 +140,16 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 	}
 	
 	@Override
-	public CoordonneesDouble[] getSommets() {
+	public Vec2d[] getSommets() {
 		double xmin = Math.min(this.xmin, this.xmax);
 		double xmax = Math.max(this.xmin, this.xmax);
 		double ymin = Math.min(this.ymin, this.ymax);
 		double ymax = Math.max(this.ymin, this.ymax);
-		return new CoordonneesDouble[] {
-				new CoordonneesDouble(xmin, ymax),
-				new CoordonneesDouble(xmax, ymax),
-				new CoordonneesDouble(xmax, ymin),
-				new CoordonneesDouble(xmin, ymin)
+		return new Vec2d[] {
+				new Vec2d(xmin, ymax),
+				new Vec2d(xmax, ymax),
+				new Vec2d(xmax, ymin),
+				new Vec2d(xmin, ymin)
 		};
 	}
 	
@@ -215,9 +215,9 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 		if (!Util.arrayContainsd(enabled, rotation)) throw new UnsupportedOperationException("seulement des rotations à angle droit.");
 		
 		//rotation
-		CoordonneesDouble[] sommets = getSommets();
-		CoordonneesDouble min = MathUtil.rotatePoint(sommets[0], cX, cY, rotation);
-		CoordonneesDouble max = MathUtil.rotatePoint(sommets[2], cX, cY, rotation);
+		Vec2d[] sommets = getSommets();
+		Vec2d min = MathUtil.rotatePoint(sommets[0], cX, cY, rotation);
+		Vec2d max = MathUtil.rotatePoint(sommets[2], cX, cY, rotation);
 		
 		//sens des coordonnees du rectangle : varie en fonction du repère (parfois ymax < ymin, par exemple)
 		int senseX = (int) Math.signum(this.xmax - this.xmin);
@@ -250,7 +250,7 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 	 * @param scaleY - L'échelle à appliquer au rectangle en hauteur.
 	 */
 	public void scaleFromCenter(double scaleX, double scaleY) {
-		CoordonneesDouble c = center();
+		Vec2d c = center();
 		
 		int senseX = (int) Math.signum(this.xmax - this.xmin);
 		int senseY = (int) Math.signum(this.ymax - this.ymin);

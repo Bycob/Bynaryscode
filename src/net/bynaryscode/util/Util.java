@@ -32,8 +32,8 @@ import java.util.List;
 import java.util.Random;
 
 import net.bynaryscode.util.maths.MathUtil;
-import net.bynaryscode.util.maths.geometric.Coordonnees;
-import net.bynaryscode.util.maths.geometric.CoordonneesDouble;
+import net.bynaryscode.util.maths.geometric.Vec2;
+import net.bynaryscode.util.maths.geometric.Vec2d;
 import net.bynaryscode.util.maths.geometric.RectangleDouble;
 
 public final class Util {
@@ -244,12 +244,12 @@ public final class Util {
 	 * dans le tableau, ou une copie de {@code c} si le tableau est null ou
 	 * ne contient aucune valeurs.
 	 */
-	public static CoordonneesDouble findNearestPoint(Coordonnees c, Coordonnees[] array) {
+	public static Vec2d findNearestPoint(Vec2 c, Vec2[] array) {
 		if (array == null) {
 			return c.asDouble();
 		}
-		CoordonneesDouble cd = c.asDouble();
-		CoordonneesDouble result = array.length > 0 ? array[0].asDouble() : cd;
+		Vec2d cd = c.asDouble();
+		Vec2d result = array.length > 0 ? array[0].asDouble() : cd;
 		for (int i = 1 ; i < array.length ; i++) {
 			if (MathUtil.getDistance(cd, result) > MathUtil.getDistance(cd, array[i].asDouble())) {
 				result = array[i].asDouble();

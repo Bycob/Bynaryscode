@@ -21,12 +21,12 @@ package net.bynaryscode.util.maths.analysis;
 
 import java.util.ArrayList;
 
-import net.bynaryscode.util.maths.geometric.CoordonneesDouble;
+import net.bynaryscode.util.maths.geometric.Vec2d;
 
 public class PolynomialFunction implements MathFunction {
 	
 	@SafeVarargs
-	public static final PolynomialFunction interpolate(CoordonneesDouble... points) {
+	public static final PolynomialFunction interpolate(Vec2d... points) {
 		PolynomialFunction result = new PolynomialFunction();
 		
 		for (int i = 0 ; i < points.length ; i++) {

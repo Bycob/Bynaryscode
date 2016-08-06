@@ -21,7 +21,7 @@ package net.bynaryscode.util.path;
 
 import java.util.ArrayList;
 
-import net.bynaryscode.util.maths.geometric.CoordonneesInt;
+import net.bynaryscode.util.maths.geometric.Vec2i;
 
 /** Représente une case  */
 public class Case extends SpaceGraphPoint {
@@ -37,7 +37,7 @@ public class Case extends SpaceGraphPoint {
 		}
 	}
 	
-	public Case(CoordonneesInt cCase, Case... previous) {
+	public Case(Vec2i cCase, Case... previous) {
 		this(cCase.x, cCase.y, previous);
 	}
 
@@ -47,8 +47,8 @@ public class Case extends SpaceGraphPoint {
 	public void setLocation(int x, int y) { this.x = x; this.y = y; }
 	
 	@Override
-	public CoordonneesInt getLocation() {
-		return new CoordonneesInt(x, y);
+	public Vec2i getLocation() {
+		return new Vec2i(x, y);
 	}
 	
 	public void addPrevious(Case previous) {

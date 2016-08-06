@@ -40,8 +40,8 @@ public class Vec3d {
 		this.z = z;
 	}
 	
-	public Vec3d(Coordonnees c) {
-		CoordonneesDouble cd = c.asDouble();
+	public Vec3d(Vec2 c) {
+		Vec2d cd = c.asDouble();
 		this.x = cd.x;
 		this.y = cd.y;
 		this.z = 0;
@@ -114,6 +114,10 @@ public class Vec3d {
 		return Math.sqrt(x * x + y * y + z * z);
 	}
 	
+	public boolean isNull() {
+		return this.x == 0 && this.y == 0 && this.z == 0;
+	}
+	
 	/**
 	 * Définit la norme du vecteur à 1. Le vecteur garde
 	 * en revanche même direction et même sens.
@@ -125,14 +129,25 @@ public class Vec3d {
 		this.z /= length;
 	}
 	
-	@Override
-	public Vec3d clone() {
-		return new Vec3d(x, y, z);
-	}
-
 	public void translate(float x, float y, float z) {
 		this.x += x;
 		this.y += y;
 		this.z += z;
+	}
+	
+	@Override
+	public boolean equals(Object other) {
+		if (other == null) return false;
+		if (!(other instanceof Vec3d)) {
+			return false;
+		}
+		Vec3d otherVec3d = (Vec3d) other;
+		
+		return this.x == otherVec3d.x && this.y == otherVec3d.y && this.z == otherVec3d.z;
+	}
+	
+	@Override
+	public Vec3d clone() {
+		return new Vec3d(x, y, z);
 	}
 }

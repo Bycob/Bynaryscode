@@ -23,25 +23,25 @@ import java.io.Serializable;
 
 import net.bynaryscode.util.maths.MathUtil;
 
-public class CoordonneesFloat extends Coordonnees implements Serializable {
+public class Vec2f extends Vec2 implements Serializable {
 	
 	private static final long serialVersionUID = 6373262196341726681L;
 	
 	public float x;
 	public float y;
 	
-	public CoordonneesFloat(){
+	public Vec2f(){
 		x = 0;
 		y = 0;
 	}
 	
-	public CoordonneesFloat(float x, float y){
+	public Vec2f(float x, float y){
 		this.x = x;
 		this.y = y;
 	}
 	
-	public double getDistance(Coordonnees c) {
-		CoordonneesFloat other = c.asFloat();
+	public double getDistance(Vec2 c) {
+		Vec2f other = c.asFloat();
 		return MathUtil.getDistance(this.x, this.y, other.x, other.y);
 	}
 	
@@ -51,8 +51,8 @@ public class CoordonneesFloat extends Coordonnees implements Serializable {
 	}
 	
 	@Override
-	public CoordonneesFloat clone(){
-		return (CoordonneesFloat) super.clone();
+	public Vec2f clone(){
+		return (Vec2f) super.clone();
 	}
 	
 	@Override
@@ -61,10 +61,10 @@ public class CoordonneesFloat extends Coordonnees implements Serializable {
 			return false;
 		}
 		
-		if (!(other instanceof CoordonneesFloat)) {
+		if (!(other instanceof Vec2f)) {
 			return false;
 		}
-		CoordonneesFloat c = (CoordonneesFloat) other;
+		Vec2f c = (Vec2f) other;
 		
 		return MathUtil.aproximatelyEquals(c.x, this.x, 0.00001) && MathUtil.aproximatelyEquals(c.y, this.y, 0.00001);
 	}
@@ -84,17 +84,17 @@ public class CoordonneesFloat extends Coordonnees implements Serializable {
 	}
 	
 	@Override
-	public CoordonneesInt asInteger() {
-		return new CoordonneesInt((int) x, (int) y);
+	public Vec2i asInteger() {
+		return new Vec2i((int) x, (int) y);
 	}
 	
 	@Override
-	public CoordonneesDouble asDouble() {
-		return new CoordonneesDouble(x, y);
+	public Vec2d asDouble() {
+		return new Vec2d(x, y);
 	}
 	
 	@Override
-	public CoordonneesFloat asFloat() {
+	public Vec2f asFloat() {
 		return this.clone();
 	}
 }

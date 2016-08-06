@@ -65,8 +65,8 @@ public class Line2D {
 	}
 	
 	/** @deprecated */
-	public CoordonneesDouble getOrthographicProjection(double x, double y) {
-		return new CoordonneesDouble();
+	public Vec2d getOrthographicProjection(double x, double y) {
+		return new Vec2d();
 	}
 	
 	/** Retourne le résultat de l'opération ax + bx + c. Le résultat est positif

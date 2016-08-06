@@ -19,7 +19,7 @@ along with BynarysCode. If not, see <http://www.gnu.org/licenses/>.
 
 package net.bynaryscode.util.physic;
 
-import net.bynaryscode.util.maths.geometric.CoordonneesDouble;
+import net.bynaryscode.util.maths.geometric.Vec2d;
 
 /**
  * Une trajectoire de mouvement rectiligne uniforme.
@@ -31,16 +31,16 @@ public class TrajectoireDroite2DLinear extends Trajectoire2D {
 		super();
 	}
 	
-	public TrajectoireDroite2DLinear(CoordonneesDouble startPoint, CoordonneesDouble endPoint) {
+	public TrajectoireDroite2DLinear(Vec2d startPoint, Vec2d endPoint) {
 		super(startPoint, endPoint);
 	}
 	
 	@Override
-	public CoordonneesDouble getPointAt(float percent) {
+	public Vec2d getPointAt(float percent) {
 		double x = startPoint.x + (endPoint.x - startPoint.x) * percent;
 		double y = startPoint.y + (endPoint.y - startPoint.y) * percent;
 		
-		return new CoordonneesDouble(x, y);
+		return new Vec2d(x, y);
 	}
 
 }

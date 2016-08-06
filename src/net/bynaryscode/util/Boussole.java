@@ -20,8 +20,8 @@ along with BynarysCode. If not, see <http://www.gnu.org/licenses/>.
 package net.bynaryscode.util;
 
 import net.bynaryscode.util.maths.MathUtil;
-import net.bynaryscode.util.maths.geometric.Coordonnees;
-import net.bynaryscode.util.maths.geometric.CoordonneesDouble;
+import net.bynaryscode.util.maths.geometric.Vec2;
+import net.bynaryscode.util.maths.geometric.Vec2d;
 
 /**
  * Les quatres points cardinaux.
@@ -69,9 +69,9 @@ public enum Boussole {
 		return NORD;
 	}
 	
-	public static double getDirection(Coordonnees origine, Coordonnees extrémité) {
-		CoordonneesDouble o = origine.asDouble();
-		CoordonneesDouble e = extrémité.asDouble();
+	public static double getDirection(Vec2 origine, Vec2 extrémité) {
+		Vec2d o = origine.asDouble();
+		Vec2d e = extrémité.asDouble();
 		double d = MathUtil.getDistance(o, e);
 		double dX = e.x - o.x;
 		double dY = e.y - o.y;

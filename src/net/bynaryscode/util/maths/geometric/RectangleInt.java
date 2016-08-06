@@ -38,8 +38,8 @@ public class RectangleInt extends Rectangle implements Cloneable {
 	}
 	
 	@Override
-	public CoordonneesDouble center() {
-		return new CoordonneesDouble((xmin - xmax) / 2 , (ymin - ymax) / 2);
+	public Vec2d center() {
+		return new Vec2d((xmin - xmax) / 2 , (ymin - ymax) / 2);
 	}
 	
 	public int getWidth() {
@@ -51,8 +51,8 @@ public class RectangleInt extends Rectangle implements Cloneable {
 	}
 	
 	@Override
-	public boolean contains(Coordonnees c) {
-		CoordonneesInt ci = c.asInteger();
+	public boolean contains(Vec2 c) {
+		Vec2i ci = c.asInteger();
 		
 		int x = ci.x;
 		int y = ci.y;
@@ -65,16 +65,16 @@ public class RectangleInt extends Rectangle implements Cloneable {
 	}
 	
 	@Override
-	public CoordonneesDouble[] getSommets() {
+	public Vec2d[] getSommets() {
 		int xmin = Math.min(this.xmin, this.xmax);
 		int xmax = Math.max(this.xmin, this.xmax);
 		int ymin = Math.min(this.ymin, this.ymax);
 		int ymax = Math.max(this.ymin, this.ymax);
-		return new CoordonneesDouble[] {
-				new CoordonneesDouble(xmin, ymax),
-				new CoordonneesDouble(xmax, ymax),
-				new CoordonneesDouble(xmax, ymin),
-				new CoordonneesDouble(xmin, ymin)
+		return new Vec2d[] {
+				new Vec2d(xmin, ymax),
+				new Vec2d(xmax, ymax),
+				new Vec2d(xmax, ymin),
+				new Vec2d(xmin, ymin)
 		};
 	}
 	
@@ -92,7 +92,7 @@ public class RectangleInt extends Rectangle implements Cloneable {
 	 * @param scaleY - L'échelle à appliquer au rectangle en hauteur.
 	 */
 	public RectangleInt scaleFromCenter(double scaleX, double scaleY) {
-		CoordonneesDouble c = center();
+		Vec2d c = center();
 		
 		int senseX = (int) Math.signum(this.xmax - this.xmin);
 		int senseY = (int) Math.signum(this.ymax - this.ymin);

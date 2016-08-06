@@ -25,8 +25,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 
-import net.bynaryscode.util.maths.geometric.Coordonnees;
-import net.bynaryscode.util.maths.geometric.CoordonneesDouble;
+import net.bynaryscode.util.maths.geometric.Vec2;
+import net.bynaryscode.util.maths.geometric.Vec2d;
 
 public class MathUtil {
 	
@@ -176,12 +176,12 @@ public class MathUtil {
 	 * @param rotation - L'angle de rotation à appliquer au point, en
 	 * radians.
 	 * @return Les nouvelles coordonnées du point, l'ancien objet 
-	 * {@link Coordonnees} n'est pas modifié.
+	 * {@link Vec2} n'est pas modifié.
 	 */
-	public static CoordonneesDouble rotatePoint(Coordonnees point,
+	public static Vec2d rotatePoint(Vec2 point,
 			double centerX, double centerY, double rotation) {
 		
-		CoordonneesDouble p = point.asDouble();
+		Vec2d p = point.asDouble();
 		
 		double dist = getDistance(p.x, p.y, centerX, centerY);
 		
@@ -196,15 +196,15 @@ public class MathUtil {
 		return p;
 	}
 	
-	public static double getDistance(Coordonnees c1, Coordonnees c2) {
-		CoordonneesDouble cd1 = c1.asDouble();
-		CoordonneesDouble cd2 = c2.asDouble();
+	public static double getDistance(Vec2 c1, Vec2 c2) {
+		Vec2d cd1 = c1.asDouble();
+		Vec2d cd2 = c2.asDouble();
 		return getDistance(cd1.x, cd1.y, cd2.x, cd2.y);
 	}
 	
-	public static double getSquaredDistance(Coordonnees c1, Coordonnees c2) {
-		CoordonneesDouble cd1 = c1.asDouble();
-		CoordonneesDouble cd2 = c2.asDouble();
+	public static double getSquaredDistance(Vec2 c1, Vec2 c2) {
+		Vec2d cd1 = c1.asDouble();
+		Vec2d cd2 = c2.asDouble();
 		return getSquaredDistance(cd1.x, cd1.y, cd2.x, cd2.y);
 	}
 	
@@ -216,11 +216,11 @@ public class MathUtil {
 		return Math.pow(xA - xB, 2) + Math.pow(yA - yB, 2);
 	}
 	
-	public static Coordonnees interpolateLinear(Coordonnees point1, Coordonnees point2, double param) {
-		CoordonneesDouble pointd1 = point1.asDouble();
-		CoordonneesDouble pointd2 = point2.asDouble();
+	public static Vec2 interpolateLinear(Vec2 point1, Vec2 point2, double param) {
+		Vec2d pointd1 = point1.asDouble();
+		Vec2d pointd2 = point2.asDouble();
 		
-		CoordonneesDouble result = new CoordonneesDouble(
+		Vec2d result = new Vec2d(
 				pointd1.x + (pointd2.x - pointd1.x) * param,
 				pointd1.y + (pointd2.y - pointd1.y) * param);
 		

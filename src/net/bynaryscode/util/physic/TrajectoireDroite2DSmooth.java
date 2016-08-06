@@ -19,7 +19,7 @@ along with BynarysCode. If not, see <http://www.gnu.org/licenses/>.
 
 package net.bynaryscode.util.physic;
 
-import net.bynaryscode.util.maths.geometric.CoordonneesDouble;
+import net.bynaryscode.util.maths.geometric.Vec2d;
 
 /**
  * Le point suivant cette trajectoire parcourt une ligne droite.
@@ -33,12 +33,12 @@ public class TrajectoireDroite2DSmooth extends Trajectoire2D {
 		super();
 	}
 	
-	public TrajectoireDroite2DSmooth(CoordonneesDouble startPoint, CoordonneesDouble endPoint) {
+	public TrajectoireDroite2DSmooth(Vec2d startPoint, Vec2d endPoint) {
 		super(startPoint, endPoint);
 	}
 	
 	@Override
-	public CoordonneesDouble getPointAt(float percent) {
+	public Vec2d getPointAt(float percent) {
 		checkPercent(percent);
 		
 		//calcule, en fonction du pourcentage de temps écoulé, le pourcentage de distance parcourue.
@@ -50,7 +50,7 @@ public class TrajectoireDroite2DSmooth extends Trajectoire2D {
 		//distance parcourue sur celle-ci.
 		double vecX = this.endPoint.x - this.startPoint.x;
 		double vecY = this.endPoint.y - this.startPoint.y;
-		CoordonneesDouble ret = new CoordonneesDouble(
+		Vec2d ret = new Vec2d(
 				this.startPoint.x + vecX * distPercent,
 				this.startPoint.y + vecY * distPercent);
 		

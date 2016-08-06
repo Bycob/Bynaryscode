@@ -26,7 +26,7 @@ public abstract class Rectangle implements Forme {
 		
 		if (f instanceof Circle) {
 			Circle c = (Circle) f;
-			CoordonneesDouble centre = c.center();
+			Vec2d centre = c.center();
 			double rayon = c.getRayon();
 			result = new RectangleDouble(
 					centre.x - rayon, centre.y - rayon,
@@ -34,7 +34,7 @@ public abstract class Rectangle implements Forme {
 			return result;
 		}
 		
-		CoordonneesDouble[] sommets = f.getSommets();
+		Vec2d[] sommets = f.getSommets();
 		if (sommets.length == 0) return new RectangleDouble();
 		
 		result = new RectangleDouble(sommets[0].x, sommets[0].y, sommets[0].x, sommets[0].y);
@@ -68,5 +68,5 @@ public abstract class Rectangle implements Forme {
 	 * en paramètres. Si le point est sur un côté du rectangle alors il est
 	 * considéré comme <i>dans</i> le rectangle. */
 	@Override
-	public abstract boolean contains(Coordonnees c);
+	public abstract boolean contains(Vec2 c);
 }

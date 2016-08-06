@@ -21,18 +21,18 @@ package net.bynaryscode.util.maths.geometric;
 
 import java.io.Serializable;
 
-public class CoordonneesInt extends Coordonnees implements Serializable {
+public class Vec2i extends Vec2 implements Serializable {
 	
 	private static final long serialVersionUID = 4384881409638581287L;
 	public int x;
 	public int y;
 	
-	public CoordonneesInt(){
+	public Vec2i(){
 		this.x = 0;
 		this.y = 0;
 	}
 	
-	public CoordonneesInt(int x, int y){
+	public Vec2i(int x, int y){
 		this.x = x;
 		this.y = y;
 	}
@@ -59,10 +59,10 @@ public class CoordonneesInt extends Coordonnees implements Serializable {
 		if (obj == null) {
 			return false;
 		}
-		if (!(obj instanceof CoordonneesInt)) {
+		if (!(obj instanceof Vec2i)) {
 			return false;
 		}
-		CoordonneesInt other = (CoordonneesInt) obj;
+		Vec2i other = (Vec2i) obj;
 		if (x != other.x) {
 			return false;
 		}
@@ -78,8 +78,8 @@ public class CoordonneesInt extends Coordonnees implements Serializable {
 	}
 
 	@Override
-	public CoordonneesInt clone(){
-		return (CoordonneesInt) super.clone();
+	public Vec2i clone(){
+		return (Vec2i) super.clone();
 	}
 	
 	@Override
@@ -88,17 +88,17 @@ public class CoordonneesInt extends Coordonnees implements Serializable {
 	}
 	
 	@Override
-	public CoordonneesDouble asDouble() {
-		return new CoordonneesDouble(this.x, this.y);
+	public Vec2d asDouble() {
+		return new Vec2d(this.x, this.y);
 	}
 	
 	@Override
-	public CoordonneesFloat asFloat() {
-		return new CoordonneesFloat(this.x, this.y);
+	public Vec2f asFloat() {
+		return new Vec2f(this.x, this.y);
 	}
 	
 	@Override
-	public CoordonneesInt asInteger() {
+	public Vec2i asInteger() {
 		return this.clone();
 	}
 }

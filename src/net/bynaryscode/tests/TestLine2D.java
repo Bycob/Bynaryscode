@@ -25,7 +25,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import net.bynaryscode.util.maths.geometric.CoordonneesDouble;
+import net.bynaryscode.util.maths.geometric.Vec2d;
 import net.bynaryscode.util.maths.geometric.Line2D;
 
 public class TestLine2D {
@@ -79,6 +79,6 @@ public class TestLine2D {
 	@Test
 	public void testOrthographicProjection() {
 		Line2D line = new Line2D(2, 4, 5, 8);
-		assertEquals(line.getOrthographicProjection(1, 11), new CoordonneesDouble(5, 8));
+		assertEquals(line.getOrthographicProjection(1, 11), new Vec2d(5, 8));
 	}
 }

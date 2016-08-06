@@ -20,7 +20,7 @@ along with BynarysCode. If not, see <http://www.gnu.org/licenses/>.
 package net.bynaryscode.util.physic;
 
 import net.bynaryscode.util.maths.MathUtil;
-import net.bynaryscode.util.maths.geometric.CoordonneesDouble;
+import net.bynaryscode.util.maths.geometric.Vec2d;
 
 /**
  * Cette classe représente la trajectoire d'un point en 2d au
@@ -34,30 +34,30 @@ import net.bynaryscode.util.maths.geometric.CoordonneesDouble;
  */
 public abstract class Trajectoire2D {
 	
-	protected CoordonneesDouble startPoint, endPoint;
+	protected Vec2d startPoint, endPoint;
 	
 	public Trajectoire2D() {
-		this(new CoordonneesDouble(), new CoordonneesDouble());
+		this(new Vec2d(), new Vec2d());
 	}
 	
-	public Trajectoire2D(CoordonneesDouble startPoint, CoordonneesDouble endPoint) {
+	public Trajectoire2D(Vec2d startPoint, Vec2d endPoint) {
 		this.startPoint = startPoint.clone();
 		this.endPoint = endPoint.clone();
 	}
 	
-	public CoordonneesDouble getStartPoint() {
+	public Vec2d getStartPoint() {
 		return startPoint;
 	}
 	
-	public void setStartPoint(CoordonneesDouble startPoint) {
+	public void setStartPoint(Vec2d startPoint) {
 		this.startPoint = startPoint;
 	}
 	
-	public CoordonneesDouble getEndPoint() {
+	public Vec2d getEndPoint() {
 		return endPoint;
 	}
 	
-	public void setEndPoint(CoordonneesDouble endPoint) {
+	public void setEndPoint(Vec2d endPoint) {
 		this.endPoint = endPoint;
 	}
 	
@@ -71,7 +71,7 @@ public abstract class Trajectoire2D {
 	 * @return Les coordonnées du point qui suit cette trajectoire
 	 * à l'instant indiqué.
 	 */
-	public abstract CoordonneesDouble getPointAt(float percent);
+	public abstract Vec2d getPointAt(float percent);
 	
 	/** Lance une exception si le pourcentage est au-delà de 100% ou
 	 * en-deçà de 0% (la valeur doit être comprise dans [0f;1f]) */

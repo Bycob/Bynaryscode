@@ -21,8 +21,8 @@ package net.bynaryscode.util.maths.geometric;
 
 public interface Forme {
 	/** Donne les sommets de la forme dans le sens horaire. */
-	CoordonneesDouble[] getSommets();
+	Vec2d[] getSommets();
 	/** Indique si cette forme contient le point passé en paramètres. */
-	boolean contains(Coordonnees c);
-	CoordonneesDouble center();
+	boolean contains(Vec2 c);
+	Vec2d center();
 }

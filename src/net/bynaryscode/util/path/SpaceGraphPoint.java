@@ -19,14 +19,14 @@ along with BynarysCode. If not, see <http://www.gnu.org/licenses/>.
 
 package net.bynaryscode.util.path;
 
-import net.bynaryscode.util.maths.geometric.Coordonnees;
+import net.bynaryscode.util.maths.geometric.Vec2;
 
 public abstract class SpaceGraphPoint {
 	
 	private float heuristic = -1;
 	private SpaceGraphPoint prev;
 	
-	public abstract Coordonnees getLocation();
+	public abstract Vec2 getLocation();
 	
 	public boolean hasHeuristic() {
 		return this.heuristic == -1;
