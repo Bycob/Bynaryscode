@@ -22,6 +22,15 @@ package net.bynaryscode.util.maths.geometric;
 /** Un vecteur en trois dimensions. */
 public class Vec3d {
 	
+	public static Vec3d unitVector(double x, double y, double z) {
+		double d = Math.sqrt(x * x + y * y + z * z);
+		return new Vec3d(x / d, y / d, z / d);
+	}
+	
+	public static Vec3d unitVector(double x, double y) {
+		return unitVector(x, y, 0);
+	}
+	
 	public double x;
 	public double y;
 	public double z;
@@ -84,6 +93,10 @@ public class Vec3d {
 	public Vec3d substract(Vec3d vec) {
 		return new Vec3d(
 				x - vec.x, y - vec.y, z - vec.z);
+	}
+	
+	public Vec3d multiply(double k) {
+		return new Vec3d(k * x, k * y, k * z);
 	}
 	
 	/**
