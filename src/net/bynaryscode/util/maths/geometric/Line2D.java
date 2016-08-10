@@ -51,20 +51,27 @@ public class Line2D {
 		return contains(pt.x, pt.y);
 	}
 	
+	/** Indique si la droite contient strictement le point indiqué. */
 	public boolean contains(double x, double y) {
 		return equation(x, y) == 0;
 	}
 	
+	public boolean contains(double x, double y, double margin) {
+		return squaredDistance(x, y) < margin * margin;
+	}
+	
+	/** Retourne la distance qui sépare le point indiqué de cette droite. */
 	public double distance(double x, double y) {
 		return Math.sqrt(squaredDistance(x, y));
 	}
-
+	
+	/** Retourne la distance au carré qui sépare le point indiqué de cette droite. */
 	public double squaredDistance(double x, double y) {
 		double eq = equation(x, y);
 		return eq * eq / (a * a + b * b);
 	}
 	
-	/** @deprecated */
+	/** @deprecated pas encore réalisé. */
 	public Vec2d getOrthographicProjection(double x, double y) {
 		return new Vec2d();
 	}
@@ -80,6 +87,14 @@ public class Line2D {
 	/** @see #equation(Vec3d) */
 	public double equation(double x, double y) {
 		return a * x + b * y + c;
+	}
+	
+	/** donne un nombre t tel que : <blockquote>t = ax si a != 0 <br> t = by
+	 * sinon</blockquote>
+	 * Ce nombre peut être utiliser pour définir un segment sur la
+	 * droite. */
+	public double getParameter(double x, double y) {
+		return a == 0 ? b * y : a * x;
 	}
 	
 	public String getEquationStr() {
