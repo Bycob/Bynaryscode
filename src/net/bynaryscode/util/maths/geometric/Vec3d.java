@@ -163,4 +163,9 @@ public class Vec3d {
 	public Vec3d clone() {
 		return new Vec3d(x, y, z);
 	}
+	
+	@Override
+	public String toString() {
+		return "(" + x + ", " + y + ", " + z + ")";
+	}
 }
