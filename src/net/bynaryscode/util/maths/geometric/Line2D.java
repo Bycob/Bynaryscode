@@ -44,7 +44,7 @@ public class Line2D {
 	}
 	
 	public Vec3d getDirectionVector() {
-		return new Vec3d(- this.a, this.b);
+		return new Vec3d(this.b, - this.a);
 	}
 	
 	public boolean contains(Vec3d pt) {
