@@ -73,7 +73,7 @@ public class Circle implements Forme {
 	 * {@link #getSommets()};
 	 */
 	public void setNbSommets(int nb) {
-		this.nbSommets = Math.min(4, nb);
+		this.nbSommets = Math.max(4, nb);
 	}
 	
 	public Vec2d[] getSommets(int nb) {

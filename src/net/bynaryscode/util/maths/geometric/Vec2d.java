@@ -77,7 +77,8 @@ public class Vec2d extends Vec2 implements Serializable {
 		
 		Vec2d other = (Vec2d) obj;
 		
-		return x == other.x && y == other.y;
+		return Double.doubleToLongBits(x) == Double.doubleToLongBits(other.x) && 
+				Double.doubleToLongBits(y) == Double.doubleToLongBits(other.y);
 	}
 	
 	@Override
