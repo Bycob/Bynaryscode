@@ -32,9 +32,9 @@ import java.util.List;
 import java.util.Random;
 
 import net.bynaryscode.util.maths.MathUtil;
+import net.bynaryscode.util.maths.geometric.RectangleDouble;
 import net.bynaryscode.util.maths.geometric.Vec2;
 import net.bynaryscode.util.maths.geometric.Vec2d;
-import net.bynaryscode.util.maths.geometric.RectangleDouble;
 
 public final class Util {
 
