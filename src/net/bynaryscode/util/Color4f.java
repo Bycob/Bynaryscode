@@ -28,6 +28,7 @@ public class Color4f implements Cloneable {
 	private float b;
 	private float a;
 	
+	/** Crée une nouvelle couleur. Par défaut, la couleur blanche. */
 	public Color4f() {
 		this(1f, 1f, 1f, 1f);
 	}
