@@ -97,7 +97,7 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 	public boolean contains(RectangleDouble r) {
 		if (r == null) return false;
 		
-		Vec2d[] sommets = r.getSommets();
+		Vec2d[] sommets = r.getVertices();
 		
 		if (!contains(sommets[0])) return false;
 		if (!contains(sommets[2])) return false;
@@ -108,7 +108,7 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 	public boolean intersects(RectangleDouble other) {
 		if (other == null) return false;
 		
-		Vec2d[] otherSommets = other.getSommets();
+		Vec2d[] otherSommets = other.getVertices();
 		int somCount = 0;
 		
 		//on commence par compter les sommets de l'autre rectangle, compris dans celui-ci.
@@ -122,7 +122,7 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 			return false;
 		}
 		else if (somCount == 0) {
-			Vec2d[] thisSommets = this.getSommets();
+			Vec2d[] thisSommets = this.getVertices();
 			somCount = 0;
 			for (int i = 0 ; i < 4 ; i++) {
 				if (other.contains(thisSommets[i])) {
@@ -140,7 +140,7 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 	}
 	
 	@Override
-	public Vec2d[] getSommets() {
+	public Vec2d[] getVertices() {
 		double xmin = Math.min(this.xmin, this.xmax);
 		double xmax = Math.max(this.xmin, this.xmax);
 		double ymin = Math.min(this.ymin, this.ymax);
@@ -215,7 +215,7 @@ public class RectangleDouble extends Rectangle implements Cloneable {
 		if (!Util.arrayContainsd(enabled, rotation)) throw new UnsupportedOperationException("seulement des rotations à angle droit.");
 		
 		//rotation
-		Vec2d[] sommets = getSommets();
+		Vec2d[] sommets = getVertices();
 		Vec2d min = MathUtil.rotatePoint(sommets[0], cX, cY, rotation);
 		Vec2d max = MathUtil.rotatePoint(sommets[2], cX, cY, rotation);
 		

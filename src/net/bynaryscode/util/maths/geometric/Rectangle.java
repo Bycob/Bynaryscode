@@ -19,9 +19,9 @@ along with BynarysCode. If not, see <http://www.gnu.org/licenses/>.
 
 package net.bynaryscode.util.maths.geometric;
 
-public abstract class Rectangle implements Forme {
+public abstract class Rectangle implements Shape {
 	
-	public static RectangleDouble getBounds(Forme f) {
+	public static RectangleDouble getBounds(Shape f) {
 		RectangleDouble result;
 		
 		if (f instanceof Circle) {
@@ -34,7 +34,7 @@ public abstract class Rectangle implements Forme {
 			return result;
 		}
 		
-		Vec2d[] sommets = f.getSommets();
+		Vec2d[] sommets = f.getVertices();
 		if (sommets.length == 0) return new RectangleDouble();
 		
 		result = new RectangleDouble(sommets[0].x, sommets[0].y, sommets[0].x, sommets[0].y);

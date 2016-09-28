@@ -19,9 +19,9 @@ along with BynarysCode. If not, see <http://www.gnu.org/licenses/>.
 
 package net.bynaryscode.util.maths.geometric;
 
-public interface Forme {
+public interface Shape {
 	/** Donne les sommets de la forme dans le sens horaire. */
-	Vec2d[] getSommets();
+	Vec2d[] getVertices();
 	/** Indique si cette forme contient le point passé en paramètres. */
 	boolean contains(Vec2 c);
 	Vec2d center();

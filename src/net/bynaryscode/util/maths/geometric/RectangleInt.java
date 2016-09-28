@@ -65,7 +65,7 @@ public class RectangleInt extends Rectangle implements Cloneable {
 	}
 	
 	@Override
-	public Vec2d[] getSommets() {
+	public Vec2d[] getVertices() {
 		int xmin = Math.min(this.xmin, this.xmax);
 		int xmax = Math.max(this.xmin, this.xmax);
 		int ymin = Math.min(this.ymin, this.ymax);

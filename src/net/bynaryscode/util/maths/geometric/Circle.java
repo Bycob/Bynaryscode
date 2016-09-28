@@ -26,7 +26,7 @@ import net.bynaryscode.util.maths.MathUtil;
  * @author Louis JEAN
  *
  */
-public class Circle implements Forme {
+public class Circle implements Shape {
 	
 	private double rayon, centreX, centreY;
 	private int nbSommets = 10;
@@ -62,15 +62,15 @@ public class Circle implements Forme {
 	
 	/**
 	 * Définit le nombre de sommets à retourner dans la méthode
-	 * {@link #getSommets()}. En effet, celle-ci renvoie les sommets
+	 * {@link #getVertices()}. En effet, celle-ci renvoie les sommets
 	 * d'un polygone régulier dont ce cercle est le cercle circonscrit.
 	 * Le nombre de sommets du polygone retourné peut varier de 3
 	 * à infini. Il est a noter que plus les sommets seront nombreux,
-	 * plus la méthode {@link #getSommets()} sera coûteuse en
+	 * plus la méthode {@link #getVertices()} sera coûteuse en
 	 * ressources.
 	 * @param nb - Le nombre de sommets du polygone inscrit dans ce
 	 * cercle, dont les sommets seront renvoyés par la méthode
-	 * {@link #getSommets()};
+	 * {@link #getVertices()};
 	 */
 	public void setNbSommets(int nb) {
 		this.nbSommets = Math.max(4, nb);
@@ -94,7 +94,7 @@ public class Circle implements Forme {
 	}
 	
 	@Override
-	public Vec2d[] getSommets() {
+	public Vec2d[] getVertices() {
 		return getSommets(this.nbSommets);
 	}
 
