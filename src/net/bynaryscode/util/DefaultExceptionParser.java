@@ -23,6 +23,19 @@ public class DefaultExceptionParser implements ExceptionParser {
 
 	@Override
 	public String parseException(Throwable e) {
-		return e.getMessage() == null ? e.getClass().getName() : e.getMessage();
+		StringBuilder result = new StringBuilder();
+		
+		if (e.getMessage() != null) {
+			result.append(e.getMessage() + "\n");
+		}
+		else {
+			result.append(e.getClass().getName() + "\n");
+		}
+		
+		for (StackTraceElement element : e.getStackTrace()) {
+			result.append("\t" + element.toString() + "\n");
+		}
+		
+		return result.toString();
 	}
 }
