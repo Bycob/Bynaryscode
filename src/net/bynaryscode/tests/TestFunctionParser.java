@@ -46,6 +46,6 @@ public class TestFunctionParser {
 	@Test
 	public void testParsePolynomialFunction() {
 		PolynomialFunction function = new PolynomialFunction(3, 2, 5.55);
-		assertEquals(function.toString(), FunctionParser.parsePolynomial("").toString());
+		assertEquals(function.toString(), FunctionParser.parsePolynomial(function.toString()).toString());
 	}
 }
