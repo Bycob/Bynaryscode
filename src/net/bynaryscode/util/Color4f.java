@@ -23,6 +23,12 @@ import net.bynaryscode.util.maths.MathUtil;
 
 public class Color4f implements Cloneable {
 	
+	public static final Color4f BLACK = new Color4f(0, 0, 0);
+	public static final Color4f WHITE = new Color4f(255, 255, 255);
+	public static final Color4f GREEN = new Color4f(0, 255, 0);
+	public static final Color4f RED = new Color4f(255, 0, 0);
+	public static final Color4f BLUE = new Color4f(0, 0, 255);
+	
 	private float r;
 	private float g;
 	private float b;
