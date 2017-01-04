@@ -70,15 +70,15 @@ public class MathUtil {
 		return result;
 	}
 	
-	public static double valueIn(double value, double min, double max){
+	public static double clampd(double value, double min, double max){
 		return (value >= min && value <= max)? value : ((value < min)? min : max);
 	}
 	
-	public static float valueIn(float value, float min, float max){
+	public static float clampf(float value, float min, float max){
 		return (value >= min && value <= max)? value : ((value < min)? min : max);
 	}
 	
-	public static int valueIn(int value, int min, int max){
+	public static int clampi(int value, int min, int max){
 		return (value >= min && value <= max)? value : ((value < min)? min : max);
 	}
 	
@@ -146,8 +146,8 @@ public class MathUtil {
 	 * radians. L'angle retourné est compris entre 0 et 2*PI
 	 */
 	public static double atan2(double cos, double sin) {
-		cos = valueIn(cos, -1, 1);
-		sin = valueIn(sin, -1, 1);
+		cos = clampd(cos, -1, 1);
+		sin = clampd(sin, -1, 1);
 		
 		double angSin = Math.asin(sin);
 		double angCos = Math.acos(cos);

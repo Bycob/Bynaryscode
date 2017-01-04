@@ -48,17 +48,17 @@ public class Color4f implements Cloneable {
 	}
 	
 	public Color4f(float r, float g, float b, float a) {
-		this.r = MathUtil.valueIn(r, 0f, 1f);
-		this.g = MathUtil.valueIn(g, 0f, 1f);
-		this.b = MathUtil.valueIn(b, 0f, 1f);
-		this.a = MathUtil.valueIn(a, 0f, 1f);
+		this.r = MathUtil.clampf(r, 0f, 1f);
+		this.g = MathUtil.clampf(g, 0f, 1f);
+		this.b = MathUtil.clampf(b, 0f, 1f);
+		this.a = MathUtil.clampf(a, 0f, 1f);
 	}
 	
 	public Color4f(int r, int g, int b, int a) {
-		float ri = MathUtil.valueIn(r, 0, 255);
-		float gi = MathUtil.valueIn(g, 0, 255);
-		float bi = MathUtil.valueIn(b, 0, 255);
-		float ai = MathUtil.valueIn(a, 0, 255);
+		float ri = MathUtil.clampi(r, 0, 255);
+		float gi = MathUtil.clampi(g, 0, 255);
+		float bi = MathUtil.clampi(b, 0, 255);
+		float ai = MathUtil.clampi(a, 0, 255);
 		
 		this.r = ri / 255f;
 		this.g = gi / 255f;
