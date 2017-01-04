@@ -101,7 +101,7 @@ public class Circle implements Shape {
 	@Override
 	public boolean contains(Vec2 c) {
 		if (c == null) return false;
-		return MathUtil.getSquaredDistance(c, center()) <= this.rayon * this.rayon;
+		return MathUtil.getSquaredLength(c, center()) <= this.rayon * this.rayon;
 	}
 
 	@Override

@@ -72,10 +72,10 @@ public enum Boussole {
 	public static double getDirection(Vec2 origine, Vec2 extrémité) {
 		Vec2d o = origine.asDouble();
 		Vec2d e = extrémité.asDouble();
-		double d = MathUtil.getDistance(o, e);
+		double d = MathUtil.getLength(o, e);
 		double dX = e.x - o.x;
 		double dY = e.y - o.y;
-		return MathUtil.angle(dX / d, dY / d);
+		return MathUtil.atan2(dX / d, dY / d);
 	}
 	
 	public static Boussole oppose(Boussole b) {

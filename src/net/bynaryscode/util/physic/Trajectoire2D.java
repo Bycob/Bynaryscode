@@ -76,7 +76,7 @@ public abstract class Trajectoire2D {
 	/** Lance une exception si le pourcentage est au-delà de 100% ou
 	 * en-deçà de 0% (la valeur doit être comprise dans [0f;1f]) */
 	protected void checkPercent(float percent) {
-		if (!MathUtil.isInRange_d(percent, 0f, 1f, true)) {
+		if (!MathUtil.valueIn(percent, 0f, 1f, true)) {
 			throw new IllegalArgumentException(percent + " n'est pas un pourcentage de temps écoulé valide.");
 		}
 	}

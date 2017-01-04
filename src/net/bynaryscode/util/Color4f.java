@@ -48,17 +48,17 @@ public class Color4f implements Cloneable {
 	}
 	
 	public Color4f(float r, float g, float b, float a) {
-		this.r = MathUtil.valueInRange_f(r, 0, 1);
-		this.g = MathUtil.valueInRange_f(g, 0, 1);
-		this.b = MathUtil.valueInRange_f(b, 0, 1);
-		this.a = MathUtil.valueInRange_f(a, 0, 1);
+		this.r = MathUtil.valueIn(r, 0f, 1f);
+		this.g = MathUtil.valueIn(g, 0f, 1f);
+		this.b = MathUtil.valueIn(b, 0f, 1f);
+		this.a = MathUtil.valueIn(a, 0f, 1f);
 	}
 	
 	public Color4f(int r, int g, int b, int a) {
-		float ri = MathUtil.valueInRange_f(r, 0, 255);
-		float gi = MathUtil.valueInRange_f(g, 0, 255);
-		float bi = MathUtil.valueInRange_f(b, 0, 255);
-		float ai = MathUtil.valueInRange_f(a, 0, 255);
+		float ri = MathUtil.valueIn(r, 0, 255);
+		float gi = MathUtil.valueIn(g, 0, 255);
+		float bi = MathUtil.valueIn(b, 0, 255);
+		float ai = MathUtil.valueIn(a, 0, 255);
 		
 		this.r = ri / 255f;
 		this.g = gi / 255f;
@@ -75,7 +75,7 @@ public class Color4f implements Cloneable {
 	}
 
 	public void setRedf(float r) {
-		if (MathUtil.isInRange_d(r, 0, 1, true))
+		if (MathUtil.valueIn(r, 0, 1, true))
 			this.r = r;
 	}
 
@@ -88,7 +88,7 @@ public class Color4f implements Cloneable {
 	}
 
 	public void setGreenf(float g) {
-		if (MathUtil.isInRange_d(g, 0, 1, true))
+		if (MathUtil.valueIn(g, 0, 1, true))
 			this.g = g;
 	}
 
@@ -101,7 +101,7 @@ public class Color4f implements Cloneable {
 	}
 
 	public void setBluef(float b) {
-		if (MathUtil.isInRange_d(b, 0, 1, true))
+		if (MathUtil.valueIn(b, 0, 1, true))
 			this.b = b;
 	}
 
@@ -114,7 +114,7 @@ public class Color4f implements Cloneable {
 	}
 
 	public void setAlphaf(float a) {
-		if (MathUtil.isInRange_d(a, 0, 1, true))
+		if (MathUtil.valueIn(a, 0, 1, true))
 			this.a = a;
 	}
 	

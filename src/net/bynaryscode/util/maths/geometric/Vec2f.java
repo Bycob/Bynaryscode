@@ -42,7 +42,7 @@ public class Vec2f extends Vec2 implements Serializable {
 	
 	public double getDistance(Vec2 c) {
 		Vec2f other = c.asFloat();
-		return MathUtil.getDistance(this.x, this.y, other.x, other.y);
+		return MathUtil.getLength(this.x, this.y, other.x, other.y);
 	}
 	
 	public void translate(float x, float y) {

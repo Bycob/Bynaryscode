@@ -251,7 +251,7 @@ public final class Util {
 		Vec2d cd = c.asDouble();
 		Vec2d result = array.length > 0 ? array[0].asDouble() : cd;
 		for (int i = 1 ; i < array.length ; i++) {
-			if (MathUtil.getDistance(cd, result) > MathUtil.getDistance(cd, array[i].asDouble())) {
+			if (MathUtil.getLength(cd, result) > MathUtil.getLength(cd, array[i].asDouble())) {
 				result = array[i].asDouble();
 			}
 		}

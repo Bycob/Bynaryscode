@@ -44,14 +44,14 @@ public class MathUtil {
 		return absoluteDifference(a, b) < Math.abs(dif);
 	}
 	
-	public static boolean isInRange_d(double value, double min, double max, boolean included){
+	public static boolean valueIn(double value, double min, double max, boolean included){
 		if (included)
 			return value >= min && value <= max;
 		else
 			return value > min && value < max;
 	}
 	
-	public static boolean areInRange_Arrayd(double[] values, double min, double max, boolean included){
+	public static boolean valuesIn(double[] values, double min, double max, boolean included){
 		boolean result = true;
 		
 		for (double value : values){
@@ -70,15 +70,15 @@ public class MathUtil {
 		return result;
 	}
 	
-	public static double valueInRange_d(double value, double min, double max){
+	public static double valueIn(double value, double min, double max){
 		return (value >= min && value <= max)? value : ((value < min)? min : max);
 	}
 	
-	public static float valueInRange_f(float value, float min, float max){
+	public static float valueIn(float value, float min, float max){
 		return (value >= min && value <= max)? value : ((value < min)? min : max);
 	}
 	
-	public static int valueInRange_i(int value, int min, int max){
+	public static int valueIn(int value, int min, int max){
 		return (value >= min && value <= max)? value : ((value < min)? min : max);
 	}
 	
@@ -109,14 +109,14 @@ public class MathUtil {
 		max = angleMainValue(max);
 		
 		if (min <= max) {
-			return MathUtil.isInRange_d(angle, min, max, true);
+			return MathUtil.valueIn(angle, min, max, true);
 		}
 		else {
 			if (angle > min) {
-				return MathUtil.isInRange_d(angle, min, max + Math.PI * 2d, true);
+				return MathUtil.valueIn(angle, min, max + Math.PI * 2d, true);
 			}
 			else {
-				return MathUtil.isInRange_d(angle, min - Math.PI * 2d, max, true);
+				return MathUtil.valueIn(angle, min - Math.PI * 2d, max, true);
 			}
 		}
 	}
@@ -145,9 +145,9 @@ public class MathUtil {
 	 * @return L'angle qui à cos pour cosinus et sin pour sinus, en
 	 * radians. L'angle retourné est compris entre 0 et 2*PI
 	 */
-	public static double angle(double cos, double sin) {
-		cos = valueInRange_d(cos, -1, 1);
-		sin = valueInRange_d(sin, -1, 1);
+	public static double atan2(double cos, double sin) {
+		cos = valueIn(cos, -1, 1);
+		sin = valueIn(sin, -1, 1);
 		
 		double angSin = Math.asin(sin);
 		double angCos = Math.acos(cos);
@@ -183,11 +183,11 @@ public class MathUtil {
 		
 		Vec2d p = point.asDouble();
 		
-		double dist = getDistance(p.x, p.y, centerX, centerY);
+		double dist = getLength(p.x, p.y, centerX, centerY);
 		
 		double sinO = (p.y - centerY) / dist;
 		double cosO = (p.x - centerX) / dist;
-		double angleO = angle(cosO, sinO);
+		double angleO = atan2(cosO, sinO);
 		
 		double angleDest = addAngle(angleO, rotation);
 		p.x = centerX + (Math.cos(angleDest) * dist);
@@ -196,23 +196,23 @@ public class MathUtil {
 		return p;
 	}
 	
-	public static double getDistance(Vec2 c1, Vec2 c2) {
+	public static double getLength(Vec2 c1, Vec2 c2) {
 		Vec2d cd1 = c1.asDouble();
 		Vec2d cd2 = c2.asDouble();
-		return getDistance(cd1.x, cd1.y, cd2.x, cd2.y);
+		return getLength(cd1.x, cd1.y, cd2.x, cd2.y);
 	}
 	
-	public static double getSquaredDistance(Vec2 c1, Vec2 c2) {
+	public static double getSquaredLength(Vec2 c1, Vec2 c2) {
 		Vec2d cd1 = c1.asDouble();
 		Vec2d cd2 = c2.asDouble();
-		return getSquaredDistance(cd1.x, cd1.y, cd2.x, cd2.y);
+		return getSquaredLength(cd1.x, cd1.y, cd2.x, cd2.y);
 	}
 	
-	public static double getDistance(double xA, double yA, double xB, double yB) {
-		return Math.sqrt(getSquaredDistance(xA, yA, xB, yB));
+	public static double getLength(double xA, double yA, double xB, double yB) {
+		return Math.sqrt(getSquaredLength(xA, yA, xB, yB));
 	}
 	
-	public static double getSquaredDistance(double xA, double yA, double xB, double yB) {
+	public static double getSquaredLength(double xA, double yA, double xB, double yB) {
 		return Math.pow(xA - xB, 2) + Math.pow(yA - yB, 2);
 	}
 	
