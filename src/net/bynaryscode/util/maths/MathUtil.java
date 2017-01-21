@@ -146,7 +146,7 @@ public class MathUtil {
 	 * radians. L'angle retourné est compris entre 0 et 2*PI
 	 */
 	public static double atan2(double cos, double sin) {
-		return Math.atan2(cos, sin);
+		return Math.atan2(sin, cos);
 	}
 	
 	/**
