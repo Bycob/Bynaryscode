@@ -146,25 +146,7 @@ public class MathUtil {
 	 * radians. L'angle retourné est compris entre 0 et 2*PI
 	 */
 	public static double atan2(double cos, double sin) {
-		cos = clampd(cos, -1, 1);
-		sin = clampd(sin, -1, 1);
-		
-		double angSin = Math.asin(sin);
-		double angCos = Math.acos(cos);
-		double angMoy = (angCos + angSin) / 2.0;
-		
-		if (cos >= 0 && sin >= 0) {
-			return angMoy;
-		}
-		else if (sin < 0 && cos >= 0) {
-			return angSin + 2 * Math.PI;
-		}
-		else if (cos < 0 && sin >= 0) {
-			return angCos;
-		}
-		else {
-			return (Math.PI * 2 - angCos);
-		}
+		return Math.atan2(cos, sin);
 	}
 	
 	/**
